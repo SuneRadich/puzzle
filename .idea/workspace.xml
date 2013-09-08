@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="873de7d2-a33d-4c48-a2c0-7b5b10dfcd11" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/lessc/lessc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/main.less" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/main.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Podio.iml" afterPath="$PROJECT_DIR$/.idea/Podio.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.less" afterPath="$PROJECT_DIR$/css/main.less" />
     </list>
     <ignored path="Podio.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="873de7d2-a33d-4c48-a2c0-7b5b10dfcd11" time="1378638795360" ignored="false" />
-    <file path="/index.html" changelist="873de7d2-a33d-4c48-a2c0-7b5b10dfcd11" time="1378645972882" ignored="false" />
-    <file path="/main.less" changelist="873de7d2-a33d-4c48-a2c0-7b5b10dfcd11" time="1378647037698" ignored="false" />
+    <file path="/index.html" changelist="873de7d2-a33d-4c48-a2c0-7b5b10dfcd11" time="1378655095628" ignored="false" />
+    <file path="/main.less" changelist="873de7d2-a33d-4c48-a2c0-7b5b10dfcd11" time="1378657125296" ignored="false" />
     <file path="/a.less" changelist="873de7d2-a33d-4c48-a2c0-7b5b10dfcd11" time="1378640117385" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +43,7 @@
       <file leaf-file-name="main.less" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/main.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="22" selection-start="2211" selection-end="2211" vertical-scroll-proportion="0.25274727">
+            <state line="238" column="39" selection-start="5650" selection-end="5650" vertical-scroll-proportion="0.700157">
               <folding />
             </state>
           </provider>
@@ -56,7 +52,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="934" selection-end="934" vertical-scroll-proportion="-14.12">
+            <state line="83" column="86" selection-start="2814" selection-end="2814" vertical-scroll-proportion="-28.56">
               <folding />
             </state>
           </provider>
@@ -243,7 +239,7 @@
     <frame x="-6" y="122" width="1440" height="811" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -347,14 +343,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="934" selection-end="934" vertical-scroll-proportion="-14.12">
+        <state line="83" column="86" selection-start="2814" selection-end="2814" vertical-scroll-proportion="-28.56">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/main.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="22" selection-start="2211" selection-end="2211" vertical-scroll-proportion="0.25274727">
+        <state line="238" column="39" selection-start="5650" selection-end="5650" vertical-scroll-proportion="0.700157">
           <folding />
         </state>
       </provider>

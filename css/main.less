@@ -95,12 +95,15 @@ textarea {
 
 /* apply a natural box layout model to all elements */
 *, *:before, *:after {
-    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 a {
     text-decoration: none;
 }
+
 a:hover {
     text-decoration: underline;
 }
@@ -109,9 +112,12 @@ a:hover {
     background-color: yellow;
     font-style: italic;
 }
+
+//TODO: Mixin for dropshadow and border radius
 header {
 
     @podioColor: #5092bd;
+    @lightGray: #eee;
     @gray: #bfbfbf;
     @darkGray: #646560;
 
@@ -122,6 +128,11 @@ header {
     border-bottom: 1px solid #3a6a8a;
     padding-left: 20px;
     padding-top: 2px;
+
+    -moz-box-shadow: 0 10px 15px #ccc;
+    -webkit-box-shadow: 0 10px 15px #ccc;;
+    box-shadow: 0 10px 15px #ccc;
+
     //TODO: search logo in input
 
     //Podio logo
@@ -139,12 +150,14 @@ header {
             float: left;
             list-style-type: none;
             position: relative;
-            padding: 0 10px;
+            padding: 0;
 
             > a {
                 color: #fff;
                 line-height: 33px;
                 text-decoration: none;
+                display: block;
+                padding: 0 10px;
             }
 
             .current {
@@ -161,7 +174,8 @@ header {
 
             &.menu {
                 //Menu indicator arrow
-                span.arrow {
+                span.arrow,
+                span.arrow span {
                     width: 0;
                     height: 0;
                     border-left: 5px solid transparent;
@@ -178,6 +192,9 @@ header {
 
                     }
                 }
+                > div {
+                    display: none;
+                }
 
                 //When GoToSpace is visible
                 &.open {
@@ -186,16 +203,21 @@ header {
                     @containerWidth: 250px;
                     position: relative;
 
+                    //To make the menu item text visible
                     > a {
                         z-index: 10;
                         position: relative;
                         color: @darkGray;
 
+                        //Adjustments for the indicator arrow
+                        .arrow,
                         span {
-                            border-top-color: #000;
+                            border-bottom: 5px solid @gray;
+                            border-top: 0;
 
                             span {
-                                border-top-color: #fff;
+                                border-bottom: 5px solid #fff;
+                                top: 2px;
                             }
                         }
                     }
@@ -214,6 +236,7 @@ header {
                     }
 
                     > div {
+                        display: block;
                         background-color: #fff;
                         position: absolute;
                         top: 33px;
@@ -222,6 +245,13 @@ header {
                         border-top: 0;
                         color: #000;
                         width: @containerWidth;
+                        -webkit-border-radius: 0 0 5px 5px;
+                        -moz-border-radius: 0 0 5px 5px;
+                        border-radius: 0 0 5px 5px;
+
+                        -moz-box-shadow: 0 2px 5px #ccc;
+                        -webkit-box-shadow: 0 2px 5px #ccc;;
+                        box-shadow: 0 2px 5px #ccc;
 
                         input {
                             //+1 to take border into account, *2 because we work with both left and right margin
@@ -237,29 +267,33 @@ header {
                                 list-style-type: none;
                                 display: table;
                                 width: 100%;
-                                border-top: 1px solid @gray;
-
+                                border-top: 1px solid @lightGray;
 
                                 div {
                                     display: table-cell;
                                     text-align: center;
                                     vertical-align: top;
-                                    width: 20px;
-                                    border-right: 1px solid @gray;
+                                    width: 34px;
+                                    border-right: 1px solid @lightGray;
 
-                                    //Space group
+                                    //Space group name
                                     a {
                                         font-weight: bold;
                                         color: @podioColor;
                                         padding: 2px 0;
                                         padding-left: @spacingToBox;
                                         display: block;
+
+                                        &.highlight {
+                                            background-color: #e8f1f8;
+                                        }
                                     }
 
                                     & + div {
                                         text-align: left;
                                         border-right: 0;
                                         padding-top: @spacingToBox / 2;
+                                        width: 166px;
 
                                         > a {
                                             line-height: 15px;
