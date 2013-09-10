@@ -155,7 +155,9 @@ header ul > li.menu span.arrow span span {
   border-top-color: #5092bd;
 }
 header ul > li.menu > div {
-  display: none;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
 }
 header ul > li.menu.open {
   position: relative;
@@ -188,9 +190,14 @@ header ul > li.menu.open .tab {
   height: 35px;
 }
 header ul > li.menu.open > div {
-  display: block;
+  opacity: 1;
+  height: auto;
+  visibility: visible;
+  -webkit-transition: opacity 1s ease-out, visibility 1s linear;
+  -moz-transition: opacity 1s ease-out, visibility 1s linear;
+  transition: opacity 1s ease-out, visibility 1s linear;
+  overflow: visible;
   background-color: #fff;
-  position: absolute;
   top: 33px;
   left: 0;
   border: 1px solid #bfbfbf;
