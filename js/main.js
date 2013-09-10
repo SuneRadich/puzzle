@@ -6,7 +6,8 @@ $('.menu a').on('click', function (event) {
 
 });
 
-$('body').on('click', function() {
+//TODO fix hiding on body click
+$('QQbody').on('click', function() {
     //If the menu is open, hide it
     var shouldHide = $('header li.menu').hasClass('open');
     if (shouldHide) {
@@ -14,6 +15,11 @@ $('body').on('click', function() {
     }
 });
 
+
+$('.menu').on('keyup', '> div input', function(){
+   var searchTerm = $(this).val();
+    reBuild(searchTerm);
+});
 //Dummy, to prevent following # links
 $('header ul li').on('click', function (event) {
     event.preventDefault();
@@ -27,6 +33,9 @@ $('header ul li').on('click', function (event) {
     //Partial template, to display an area
     var template_area = [
         '<div>',
+        '<ol>',
+        '{{#areas}}',
+        '<li>','<div>',
             '<img src="{{image.thumbnail_link}}" alt="{{hosted_by_humanized_name}}">',
         '</div>',
         '<div>',
@@ -36,6 +45,10 @@ $('header ul li').on('click', function (event) {
                 '<li><a href="{{url}}">{{{name}}}</a></li>',
                 '{{/spaces}}',
             '</ol>',
+        '</div>',
+        '</li>',
+        '{{/areas}}',
+        '</ol>',
         '</div>'
     ].join('');
 
@@ -46,15 +59,7 @@ $('header ul li').on('click', function (event) {
         '<div>',
             '<span class="tab"></span>',
             '<input type="text">',
-            '<div>',
-                '<ol>',
-                    '{{#areas}}',
-                    '<li>',
-                        '{{> template_area}}',
-                    '</li>',
-                '{{/areas}}',
-                '</ol>',
-            '</div>',
+            '{{> template_area}}',
         '</div>'].join('');
 
     //Get the data, and build the nessesary html for the dropdown
@@ -141,9 +146,11 @@ $('header ul li').on('click', function (event) {
             returnObject.areas = tmpArea;
 
             //Render the results, and add them to the DOM
-            $('.menu > div').replaceWith( Mustache.render(template, returnObject) );
+            $('.menu > div > div').replaceWith( Mustache.render(template_area, returnObject) );
 
         });
     }
+
+    window.reBuild = reBuild;
 
 }(jQuery));
