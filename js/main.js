@@ -33,22 +33,23 @@ $('header ul li').on('click', function (event) {
     //Partial template, to display an area
     var template_area = [
         '<div>',
-        '<ol>',
-        '{{#areas}}',
-        '<li>','<div>',
-            '<img src="{{image.thumbnail_link}}" alt="{{hosted_by_humanized_name}}">',
-        '</div>',
-        '<div>',
-            '<a href="{{url}}">{{{name}}}</a>',
             '<ol>',
-                '{{#spaces}}',
-                '<li><a href="{{url}}">{{{name}}}</a></li>',
-                '{{/spaces}}',
+                '{{#areas}}',
+                '<li>',
+                    '<div>',
+                        '<img src="{{image.thumbnail_link}}" alt="{{hosted_by_humanized_name}}">',
+                    '</div>',
+                    '<div>',
+                        '<a href="{{url}}">{{{name}}}</a>',
+                        '<ol>',
+                            '{{#spaces}}',
+                            '<li><a href="{{url}}">{{{name}}}</a></li>',
+                            '{{/spaces}}',
+                        '</ol>',
+                    '</div>',
+                '</li>',
+                '{{/areas}}',
             '</ol>',
-        '</div>',
-        '</li>',
-        '{{/areas}}',
-        '</ol>',
         '</div>'
     ].join('');
 
@@ -152,6 +153,9 @@ $('header ul li').on('click', function (event) {
 
             //Render the results, and add them to the DOM
             $('.menu > div > div').replaceWith( Mustache.render(template_area, returnObject) );
+
+
+            $('.menu > div > div > a').addClass('highlight');
 
         });
     }
