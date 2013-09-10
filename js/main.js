@@ -78,7 +78,7 @@ $('header ul li').on('click', function (event) {
         config.areas = tmp;
 
         //Render the template, and append to the DOM
-        $('.menu').append(Mustache.render(template, config));
+        $('.menu').append( Mustache.render(template, config) );
 
     });
 
@@ -95,30 +95,35 @@ $('header ul li').on('click', function (event) {
         /**
          * Add a span to a given substring in a given string
          * @param part {string} The string to wrap in a span
-         * @param string {string} The string to manipulate
+         * @param str {string} The string to manipulate
          *
          * @returns {string}
          */
-        function highlight(part, string) {
-            var regexp = new RegExp(part, 'g');
+        function highlight(part, str) {
 
-            return string.replace(regexp, '<span class="highlight">' + part + '</span>');
+            var regexp = new RegExp('(' + part + ')', 'gi');
+
+            return str.replace(regexp, '<span class="highlight">$1</span>');
+
         }
 
         //Manipulate the json data, and filter spaces and areas so only the ones that match are left
         $.getJSON('data/data.json', function(data){
 
             var i, j;
-            var searchFor = new RegExp(searchTerm);
+            var searchFor = new RegExp(searchTerm, 'i');
 
             for (i = 0; i < data.length;i++){
 
                 var area = data[i];
 
                 for (j = 0; j < area.spaces.length; j++) {
+
                     if (area.spaces[j].name.match(searchFor)) {
+
                         //Highlight the matching part(s) of the name
                         area.spaces[j].name = highlight(searchTerm, area.spaces[j].name);
+
                         //Save current space in a temp array
                         tmpSpaces.push(area.spaces[j]);
                     }
