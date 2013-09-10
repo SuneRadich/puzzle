@@ -158,6 +158,9 @@ header ul > li.menu > div {
   opacity: 0;
   overflow: hidden;
   position: absolute;
+  visibility: hidden;
+  left: -999px;
+  top: -999px;
 }
 header ul > li.menu.open {
   position: relative;
@@ -193,9 +196,9 @@ header ul > li.menu.open > div {
   opacity: 1;
   height: auto;
   visibility: visible;
-  -webkit-transition: opacity 1s ease-out, visibility 1s linear;
-  -moz-transition: opacity 1s ease-out, visibility 1s linear;
-  transition: opacity 1s ease-out, visibility 1s linear;
+  -webkit-transition: opacity 0.2s ease-out, visibility 0.2s linear;
+  -moz-transition: opacity 0.2s ease-out, visibility 0.2s linear;
+  transition: opacity 0.2s ease-out, visibility 0.2s linear;
   overflow: visible;
   background-color: #fff;
   top: 33px;
@@ -204,6 +207,7 @@ header ul > li.menu.open > div {
   border-top: 0;
   color: #000;
   width: 250px;
+  padding-bottom: 6px;
   -webkit-border-radius: 0 0 5px 5px;
   -moz-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;

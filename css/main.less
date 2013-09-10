@@ -201,6 +201,9 @@ header {
                     opacity: 0;
                     overflow: hidden;
                     position: absolute;
+                    visibility: hidden;
+                    left: -999px;
+                    top: -999px;
                 }
 
                 //When GoToSpace is visible
@@ -250,9 +253,9 @@ header {
 
                         visibility: visible;
 
-                        -webkit-transition: opacity 1s ease-out, visibility 1s linear;
-                        -moz-transition: opacity 1s ease-out, visibility 1s linear;
-                        transition: opacity 1s ease-out, visibility 1s linear;
+                        -webkit-transition: opacity 0.2s ease-out, visibility 0.2s linear;
+                        -moz-transition: opacity 0.2s ease-out, visibility 0.2s linear;
+                        transition: opacity 0.2s ease-out, visibility 0.2s linear;
 
                         overflow: visible;
                         background-color: #fff;
@@ -262,6 +265,7 @@ header {
                         border-top: 0;
                         color: #000;
                         width: @containerWidth;
+                        padding-bottom: @spacingToBox;
 
                         -webkit-border-radius: 0 0 5px 5px;
                         -moz-border-radius: 0 0 5px 5px;
