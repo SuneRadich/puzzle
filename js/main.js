@@ -72,7 +72,6 @@ $('header ul li').on('click', function (event) {
         //Add the areas array to the configuration object
         config.areas = tmp;
 
-        console.log('config', config);
         //Render the template, and append to the DOM
         $('.menu').append(Mustache.render(template, config));
 

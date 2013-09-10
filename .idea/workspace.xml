@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="873de7d2-a33d-4c48-a2c0-7b5b10dfcd11" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/vendor/mustache-0.7.2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.less" afterPath="$PROJECT_DIR$/css/main.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Podio.iws" />
@@ -75,7 +70,7 @@
       <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="82" selection-start="4677" selection-end="4677" vertical-scroll-proportion="0.65625">
+            <state line="73" column="0" selection-start="2088" selection-end="2088" vertical-scroll-proportion="0.5625">
               <folding />
             </state>
           </provider>
@@ -121,8 +116,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="315" />
-    <option name="y" value="103" />
+    <option name="x" value="372" />
+    <option name="y" value="136" />
     <option name="width" value="1440" />
     <option name="height" value="811" />
   </component>
@@ -282,7 +277,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="315" y="103" width="1440" height="811" extended-state="0" />
+    <frame x="372" y="136" width="1440" height="811" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -419,7 +414,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="82" selection-start="4677" selection-end="4677" vertical-scroll-proportion="0.65625">
+        <state line="73" column="0" selection-start="2088" selection-end="2088" vertical-scroll-proportion="0.5625">
           <folding />
         </state>
       </provider>
