@@ -33,7 +33,7 @@
     var template = [
         '<div>',
         '<span class="tab"></span>',
-        '<input type="text">',
+        '<span class="input"><span></span><input type="text"></span>',
         '{{> template_area}}',
         '</div>'].join('');
 
@@ -92,6 +92,8 @@
 
         //Render the template, and append to the DOM
         $('.menu').append(Mustache.render(template, config));
+        //Highlight the first item
+        $('.areaContainer a:first').addClass('highlight');
     });
 
     function reBuild(searchTerm) {
@@ -103,7 +105,7 @@
         var data, i, j, searchFor;
 
         if (searchTerm == undefined) {
-            //return;
+            return;
         }
 
          /**
@@ -119,7 +121,6 @@
             return str.replace(regexp, '<span class="highlight">$1</span>');
         }
 
-        console.log('if');
         //Cache exists
         if (cache !== false) {
 
@@ -171,7 +172,6 @@
 
             //Highlight the first link in the results
             $('.areaContainer a:first').addClass('highlight');
-console.log( $('.areaContainer a:first') );
         }
         else {
             //reload json, and rebuild
@@ -214,12 +214,15 @@ console.log( $('.areaContainer a:first') );
                 $(selectableLinks).eq(newIndex).addClass('highlight');
                 break;
             case 27:    //esc
+                //Reset value in the input field
                 $(this).val("");
+                //Hide the menu
                 $(this).closest('.menu').removeClass('open');
+                //rebuild, to clear any typed in input
                 reBuild("");
                 break;
-            case 13:
-                console.log('13', $(current, '.menu').prop('href'));
+            case 13:    //enter
+                //Follow the href on the currently highlighted link
                 document.location.href = $(current, '.menu').prop('href');
                 break;
             default:

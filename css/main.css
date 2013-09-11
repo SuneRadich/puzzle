@@ -215,9 +215,23 @@ header ul > li.menu.open > div {
   -webkit-box-shadow: 0 2px 5px #ccc;
   box-shadow: 0 2px 5px #ccc;
 }
-header ul > li.menu.open > div input {
+header ul > li.menu.open > div .input {
+  position: relative;
+}
+header ul > li.menu.open > div .input span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url('../img/search_icon.png') no-repeat 0 0;
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+header ul > li.menu.open > div .input input {
   width: 236px;
   margin: 6px;
+  padding-left: 17px;
+  line-height: 22px;
 }
 header ul > li.menu.open > div ol {
   margin: 0;

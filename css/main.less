@@ -273,10 +273,26 @@ header {
                         -webkit-box-shadow: 0 2px 5px #ccc;;
                         box-shadow: 0 2px 5px #ccc;
 
-                        input {
-                            //+1 to take border into account, *2 because we work with both left and right margin
-                            width: @containerWidth - ((@spacingToBox + 1) * 2);
-                            margin: @spacingToBox;
+                        .input {
+                            position: relative;
+                            span {
+                                display: block;
+                                width: 12px;
+                                height: 12px;
+                                background: url('../img/search_icon.png') no-repeat 0 0;
+                                position: absolute;
+                                top: 0;
+                                left: 10px;
+                            }
+
+                            input {
+                                //+1 to take border into account, *2 because we work with both left and right margin
+                                width: @containerWidth - ((@spacingToBox + 1) * 2);
+                                margin: @spacingToBox;
+                                padding-left: 17px;
+                                line-height: 22px;
+                            }
+
                         }
 
                         ol {
