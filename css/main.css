@@ -255,15 +255,13 @@ header ul > li.menu.open > div ol li div + div {
 header ul > li.menu.open > div ol li div + div > a {
   line-height: 15px;
 }
-header ul > li.menu.open > div ol li div + div ol {
-  padding-left: 12px;
-}
 header ul > li.menu.open > div ol li div + div ol li {
   display: block;
   border-top: 0;
   line-height: 15px;
 }
 header ul > li.menu.open > div ol li div + div ol li a {
+  padding-left: 12px;
   font-weight: normal;
   color: #646560;
 }
