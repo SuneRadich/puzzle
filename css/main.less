@@ -113,9 +113,26 @@ a:hover {
     font-style: italic;
 }
 
-//TODO: Mixin for dropshadow and border radius
 //TODO: graphics for arrow
 header {
+
+    .border-radius (@radius) {
+        border-radius: @radius;
+        -moz-border-radius: @radius;
+        -webkit-border-radius: @radius;
+    }
+
+    .box-shadow (@shadow) {
+        -moz-box-shadow: @shadow;
+        -webkit-box-shadow: @shadow;
+        box-shadow: @shadow;
+    }
+
+    .transition(@transFirst, @transSecond) {
+        -webkit-transition: @transFirst, @transSecond;
+        -moz-transition: @transFirst, @transSecond;
+        transition: @transFirst, @transSecond;
+    }
 
     @podioColor: #5092bd;
     @lightGray: #eee;
@@ -129,12 +146,7 @@ header {
     border-bottom: 1px solid #3a6a8a;
     padding-left: 20px;
     padding-top: 2px;
-
-    -moz-box-shadow: 0 10px 15px #ccc;
-    -webkit-box-shadow: 0 10px 15px #ccc;;
-    box-shadow: 0 10px 15px #ccc;
-
-    //TODO: search logo in input
+    .box-shadow(0 10px 15px #ccc);
 
     //Podio logo
     .podioLogo {
@@ -143,7 +155,6 @@ header {
         margin-right: 15px;
     }
     ul {
-        //TODO fix correct bg color
         height: 33px;
         padding: 0;
         margin: 0;
@@ -196,9 +207,7 @@ header {
                     }
                 }
 
-
                 //Content for the shown menu
-                //TODO, change to class?
                 > div {
                     opacity: 0;
                     overflow: hidden;
@@ -236,9 +245,7 @@ header {
 
                     .tab {
                         background-color: #fff;
-                        -webkit-border-radius: 5px 5px 0 0;
-                        -moz-border-radius: 5px 5px 0 0;
-                        border-radius: 5px 5px 0 0;
+                        .border-radius(5px 5px 0 0);
                         position: absolute;
                         top: -31px;
                         left: 0;
@@ -250,12 +257,9 @@ header {
                     > div {
                         opacity: 1;
                         height: auto;
-
                         visibility: visible;
 
-                        -webkit-transition: opacity 0.2s ease-out, visibility 0.2s linear;
-                        -moz-transition: opacity 0.2s ease-out, visibility 0.2s linear;
-                        transition: opacity 0.2s ease-out, visibility 0.2s linear;
+                        .transition(opacity 0.2s ease-out, visibility 0.2s linear);
 
                         overflow: visible;
                         background-color: #fff;
@@ -267,13 +271,8 @@ header {
                         width: @containerWidth;
                         padding-bottom: @spacingToBox;
 
-                        -webkit-border-radius: 0 0 5px 5px;
-                        -moz-border-radius: 0 0 5px 5px;
-                        border-radius: 0 0 5px 5px;
-
-                        -moz-box-shadow: 0 2px 5px #ccc;
-                        -webkit-box-shadow: 0 2px 5px #ccc;;
-                        box-shadow: 0 2px 5px #ccc;
+                        .border-radius(0 0 5px 5px);
+                        .box-shadow(0 2px 5px #ccc);
 
                         .input {
                             position: relative;

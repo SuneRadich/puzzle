@@ -100,9 +100,9 @@ header {
   border-bottom: 1px solid #3a6a8a;
   padding-left: 20px;
   padding-top: 2px;
-  -moz-box-shadow: 0 10px 15px #ccc;
-  -webkit-box-shadow: 0 10px 15px #ccc;
-  box-shadow: 0 10px 15px #ccc;
+  -moz-box-shadow: 0 10px 15px #cccccc;
+  -webkit-box-shadow: 0 10px 15px #cccccc;
+  box-shadow: 0 10px 15px #cccccc;
 }
 header .podioLogo {
   float: left;
@@ -184,9 +184,9 @@ header ul > li.menu.open > a span span {
 }
 header ul > li.menu.open .tab {
   background-color: #fff;
-  -webkit-border-radius: 5px 5px 0 0;
-  -moz-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
   position: absolute;
   top: -31px;
   left: 0;
@@ -210,12 +210,12 @@ header ul > li.menu.open > div {
   color: #000;
   width: 250px;
   padding-bottom: 6px;
-  -webkit-border-radius: 0 0 5px 5px;
-  -moz-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
-  -moz-box-shadow: 0 2px 5px #ccc;
-  -webkit-box-shadow: 0 2px 5px #ccc;
-  box-shadow: 0 2px 5px #ccc;
+  -moz-border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-box-shadow: 0 2px 5px #cccccc;
+  -webkit-box-shadow: 0 2px 5px #cccccc;
+  box-shadow: 0 2px 5px #cccccc;
 }
 header ul > li.menu.open > div .input {
   position: relative;
