@@ -113,9 +113,9 @@ a:hover {
     font-style: italic;
 }
 
-//TODO: graphics for arrow
 header {
 
+    //Mixins
     .border-radius (@radius) {
         border-radius: @radius;
         -moz-border-radius: @radius;
@@ -134,13 +134,14 @@ header {
         transition: @transFirst, @transSecond;
     }
 
+    //Variables
     @podioColor: #5092bd;
     @lightGray: #eee;
     @gray: #bfbfbf;
     @darkGray: #646560;
 
-    font-size: 11px;
 
+    font-size: 11px;
     background-color: @podioColor;
     height: 35px;
     border-bottom: 1px solid #3a6a8a;
@@ -154,6 +155,8 @@ header {
         margin-top: 6px;
         margin-right: 15px;
     }
+
+    //The menu items
     ul {
         height: 33px;
         padding: 0;
@@ -174,6 +177,7 @@ header {
                 padding: 0 10px;
             }
 
+            //Indicator at the bottom of a menu item, to indicate where you are
             .current {
                 position: absolute;
                 bottom: 0;
@@ -186,7 +190,9 @@ header {
                 border-bottom: 4px solid #fff;
             }
 
+            //This menu item contains our sub menu
             &.menu {
+
                 //Menu indicator arrow
                 span.arrow,
                 span.arrow span {
@@ -243,6 +249,7 @@ header {
                         }
                     }
 
+                    //The white tab to cover the menu item
                     .tab {
                         background-color: #fff;
                         .border-radius(5px 5px 0 0);
@@ -276,6 +283,7 @@ header {
 
                         .input {
                             position: relative;
+
                             span {
                                 display: block;
                                 width: 12px;
@@ -353,7 +361,8 @@ header {
                                         }
                                     }
                                 }
-                                //Space thumbnail
+
+                                //Space thumbnail, forces the same size, regard less of image source
                                 img {
                                     width: 20px;
                                     height: 20px;
