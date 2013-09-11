@@ -230,7 +230,7 @@
 
         if (menuHeight > viewportHeight) {
             $('.spacesContainer', menu).css({
-                'max-height': viewportHeight - spacesContainerOffset - 10 + "px"
+                'max-height': viewportHeight * 0.8 - spacesContainerOffset + "px"
             });
         }
     });
