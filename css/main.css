@@ -235,6 +235,9 @@ header ul > li.menu.open > div .input input {
   padding-left: 17px;
   line-height: 22px;
 }
+header ul > li.menu.open > div .spacesContainer {
+  overflow: scroll;
+}
 header ul > li.menu.open > div ol {
   margin: 0;
   padding: 0;

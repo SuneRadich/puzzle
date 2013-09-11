@@ -10,7 +10,7 @@
 
     //Partial template, to display an area
     var partialTemplate = [
-        '<div>',
+        '<div class="spacesContainer">',
             '<ol>',
                 '{{#areas}}',
                 '<li>',
@@ -107,7 +107,10 @@
 
             //Highlight the first item
             $('.areaContainer a:first').addClass('highlight');
+
+
         });
+
     };
 
     /**
@@ -190,6 +193,8 @@
 
             //Highlight the first link in the results
             $('.areaContainer a:first').addClass('highlight');
+
+            $(window).trigger('reBuild');
         }
         //Cache did not exist, run init and fetch data
         else {
@@ -215,6 +220,21 @@
         $('input', self).val("");
     });
 
+
+
+    $(window).on('reBuild', function(){
+
+        var spacesContainerOffset = $('.spacesContainer', menu).offset().top;
+        var menuHeight = $('.spacesContainer', menu).height() + spacesContainerOffset;
+        var viewportHeight = $(window).height();
+
+        if (menuHeight > viewportHeight) {
+            $('.spacesContainer', menu).css({
+                'max-height': viewportHeight - spacesContainerOffset - 10 + "px"
+            });
+        }
+    });
+
     /**
      * Handle opening and closing of the menu
      */
@@ -222,13 +242,21 @@
         //Prevent this click event to bubble up
         event.preventDefault();
         var menu = $(this).parent();
-        menu.toggleClass('open');
 
-        //A short delay, while css transition does its thing
-        setTimeout(function(){
-            //Set focus on the input field
-            $('input', menu).focus();
-        }, 55);
+        if (menu.hasClass('open')) {
+            menu.trigger('goHide');
+        } else {
+            menu.addClass('open');
+
+            //Tell the window we build the menu
+            $(window).trigger('reBuild');
+
+            //A short delay, while css transition does its thing
+            setTimeout(function(){
+                //Set focus on the input field
+                $('input', menu).focus();
+            }, 55);
+        }
     });
 
     //Prevent clicks in the menu to bubble up, enables the body click handler to close the menu
@@ -275,5 +303,6 @@
                 reBuild(searchTerm);
         }
     });
+
 
 }(jQuery));
