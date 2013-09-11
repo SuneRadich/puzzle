@@ -1,55 +1,29 @@
-$('.menu a').on('click', function (event) {
-    //Prevent this click event to bubble up
-    event.stopPropagation();
-    event.preventDefault();
-    $(this).parent().toggleClass('open');
-
-});
-
-//TODO fix hiding on body click
-$('QQbody').on('click', function() {
-    //If the menu is open, hide it
-    var shouldHide = $('header li.menu').hasClass('open');
-    if (shouldHide) {
-        $('header li.menu.open').removeClass('open');
-    }
-});
-
-
-$('.menu').on('keyup', '> div input', function(){
-   var searchTerm = $(this).val();
-    reBuild(searchTerm);
-});
-//Dummy, to prevent following # links
-$('header ul li').on('click', function (event) {
-    event.preventDefault();
-});
-
-//TODO cache json
-//TODO Escape ' and handle javascript
-
 (function ($) {
+
+    var storage = {
+        currentIndex: 0
+    };
 
     //Partial template, to display an area
     var template_area = [
         '<div>',
-            '<ol>',
-                '{{#areas}}',
-                '<li>',
-                    '<div>',
-                        '<img src="{{image.thumbnail_link}}" alt="{{hosted_by_humanized_name}}">',
-                    '</div>',
-                    '<div>',
-                        '<a href="{{url}}">{{{name}}}</a>',
-                        '<ol>',
-                            '{{#spaces}}',
-                            '<li><a href="{{url}}">{{{name}}}</a></li>',
-                            '{{/spaces}}',
-                        '</ol>',
-                    '</div>',
-                '</li>',
-                '{{/areas}}',
-            '</ol>',
+        '<ol>',
+        '{{#areas}}',
+        '<li>',
+        '<div>',
+        '<img src="{{image.thumbnail_link}}" alt="{{hosted_by_humanized_name}}">',
+        '</div>',
+        '<div class="areaContainer">',
+        '<a href="{{url}}">{{{name}}}</a>',
+        '<ol>',
+        '{{#spaces}}',
+        '<li><a href="{{url}}">{{{name}}}</a></li>',
+        '{{/spaces}}',
+        '</ol>',
+        '</div>',
+        '</li>',
+        '{{/areas}}',
+        '</ol>',
         '</div>'
     ].join('');
 
@@ -58,29 +32,66 @@ $('header ul li').on('click', function (event) {
 
     var template = [
         '<div>',
-            '<span class="tab"></span>',
-            '<input type="text">',
-            '{{> template_area}}',
+        '<span class="tab"></span>',
+        '<input type="text">',
+        '{{> template_area}}',
         '</div>'].join('');
 
-    //Get the data, and build the nessesary html for the dropdown
-    $.getJSON('data/data.json', function (data) {
+    /**
+     * Save fetched data locally
+     * @param data
+     */
+    var setCache = function (data) {
+        storage.cache = data;
+    };
+
+    /**
+     * Clear saved cache
+     */
+    var invalidateCache = function () {
+        delete storage.cache;
+    };
+
+    var getCache = function () {
+        if ("cache" in storage) {
+            return storage.cache;
+        } else {
+            return false;
+        }
+    };
+
+    var loadJSON = function (callback) {
+
+        //Get the data, and build the nessesary html for the dropdown
+        $.getJSON('data/data.json', function (data) {
+
+            setCache(data);
+
+            if (typeof callback === "function") {
+                callback();
+            }
+        });
+    };
+
+
+    loadJSON(function () {
 
         //Mustache config object
         var config = {};
         //tmp array, needed to save areas with a key
         var tmp = [];
+        var data = getCache();
 
         //Loop through all areas, and add them to the array
         $(data).each(function (index, item) {
             tmp.push(item);
         });
+
         //Add the areas array to the configuration object
         config.areas = tmp;
 
         //Render the template, and append to the DOM
-        $('.menu').append( Mustache.render(template, config) );
-
+        $('.menu').append(Mustache.render(template, config));
     });
 
     function reBuild(searchTerm) {
@@ -88,33 +99,36 @@ $('header ul li').on('click', function (event) {
         var returnObject = {};
         var tmpArea = [];
         var tmpSpaces = [];
+        var cache = getCache();
+        var data, i, j, searchFor;
 
         if (searchTerm == undefined) {
-            return;
+            //return;
         }
 
-        /**
+         /**
          * Add a span to a given substring in a given string
+         *
          * @param part {string} The string to wrap in a span
          * @param str {string} The string to manipulate
          *
          * @returns {string}
          */
         function highlight(part, str) {
-
             var regexp = new RegExp('(' + part + ')', 'gi');
-
             return str.replace(regexp, '<span class="highlight">$1</span>');
-
         }
 
-        //Manipulate the json data, and filter spaces and areas so only the ones that match are left
-        $.getJSON('data/data.json', function(data){
+        console.log('if');
+        //Cache exists
+        if (cache !== false) {
 
-            var i, j;
-            var searchFor = new RegExp(searchTerm, 'i');
+            //Deep copy, to keep cache untouched
+            data = $().extend(true, [], cache);
 
-            for (i = 0; i < data.length;i++){
+            searchFor = new RegExp(searchTerm, 'i');
+
+            for (i = 0; i < data.length; i++) {
 
                 var area = data[i];
 
@@ -143,6 +157,7 @@ $('header ul li').on('click', function (event) {
                 else if (area.name.match(searchFor)) {
                     //Highlight the matching part(s) of the name
                     area.name = highlight(searchTerm, area.name);
+                    //Reset the spaces attribute, to make sure only the area name is shown
                     area.spaces = [];
                     tmpArea.push(area);
                 }
@@ -154,12 +169,62 @@ $('header ul li').on('click', function (event) {
             //Render the results, and add them to the DOM
             $('.menu > div > div').replaceWith( Mustache.render(template_area, returnObject) );
 
-
-            $('.menu > div > div > a').addClass('highlight');
-
-        });
+            //Highlight the first link in the results
+            $('.areaContainer a:first').addClass('highlight');
+console.log( $('.areaContainer a:first') );
+        }
+        else {
+            //reload json, and rebuild
+        }
     }
 
     window.reBuild = reBuild;
 
+    /** jQuery **/
+
+    /**
+     * Handle opening and closing of the submenu
+     */
+    $('.menu a').on('click', function (event) {
+        //Prevent this click event to bubble up
+        event.stopPropagation();
+        event.preventDefault();
+        $(this).parent().toggleClass('open');
+    });
+
+//TODO fix hiding on body click
+
+    /**
+     * Handle keypress in the input. UP and DOWN moves the current highlight, escape closes the submenu
+     */
+    $('.menu').on('keyup', '> div input', function (event) {
+
+        var selectableLinks = '.areaContainer a';
+        var current = 'a.highlight';
+        var index = $(selectableLinks).index($(current));
+        var newIndex = index - 1;
+
+        //Only submit search if it is not UP or DOWN or ESC
+        switch (event.keyCode) {
+            case 40:    //down
+                newIndex = index + 1;
+            case 38:    //up
+                $('.areacontainer a', '.menu').removeClass('highlight');
+                $(selectableLinks).removeClass('highlight');
+                $(selectableLinks).eq(newIndex).addClass('highlight');
+                break;
+            case 27:    //esc
+                $(this).val("");
+                $(this).closest('.menu').removeClass('open');
+                reBuild("");
+                break;
+            case 13:
+                console.log('13', $(current, '.menu').prop('href'));
+                document.location.href = $(current, '.menu').prop('href');
+                break;
+            default:
+                var searchTerm = $(this).val();
+                reBuild(searchTerm);
+        }
+    });
 }(jQuery));
